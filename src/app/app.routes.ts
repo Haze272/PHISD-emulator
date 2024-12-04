@@ -3,6 +3,7 @@ import {EmulatorPageComponent} from './features/emulator/emulator-page/emulator-
 import {
   HarvardDualOperandPageComponent
 } from './features/emulator/harvard-dual-operand/harvard-dual-operand-page/harvard-dual-operand-page.component';
+import {SandboxPageComponent} from './_sandbox/sandbox-page/sandbox-page.component';
 
 export const routes: Routes = [
   {
@@ -18,5 +19,11 @@ export const routes: Routes = [
         component: HarvardDualOperandPageComponent
       }
     ]
-  }
+  },
+
+
+  {
+    path: 'sandbox',
+    component: SandboxPageComponent
+  },
 ];

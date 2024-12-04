@@ -1,0 +1,70 @@
+@use "reset";
+@use "variables";
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+}
+
+section, header, .container {
+  padding: 0 15px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+section.full-width {
+  padding: 0 var(--spacing-02);
+}
+
+section[class] {
+  padding-top: var(--spacing-04);
+  padding-bottom: var(--spacing-04);
+}
+
+@media (min-width: 575.98px){
+  section, header, .container {
+    padding: 0 calc(50vw - 270px);
+  }
+}
+
+@media (min-width: 767.98px){
+  section, header, .container {
+    padding: 0 calc(50vw - 360px);
+  }
+}
+
+@media (min-width: 991.98px) {
+  section, header, .container {
+    padding: 0 calc(50vw - 480px);
+  }
+}
+
+@media (min-width: 1199.98px){
+  section, header, .container {
+    padding: 0 calc(13vw - 114px);
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--text-color);
+}
+
+h2 {
+  font-size: 1.75rem;
+  color: var(--text-color);
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+h4 {
+  font-size: 1.25rem;
+  color: var(--text-color);
+}

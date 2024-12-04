@@ -1,1 +1,80 @@
-<p>harvard-dual-operand-page works!</p>
+<section class="page">
+  <h1>Двухадресная Гарвардская архитектура</h1>
+
+  <div class="emulator">
+    <div class="emulator__input">
+      <label class="label-input">
+        <span>Данные для загрузки</span>
+        <textarea #inputData placeholder="Введите последовательность целых чисел со знаком через запятую"></textarea>
+      </label>
+
+      <button (click)="loadData(inputData.value)">Загрузить</button>
+
+      <label class="label-input">
+        <span>Команды для загрузки</span>
+        <textarea #inputInstructions placeholder="Введите команды ассемблера по одной на строку"></textarea>
+      </label>
+
+      <button (click)="loadInstructions(inputInstructions.value)">Загрузить</button>
+    </div>
+
+    <div class="emulator__divider"></div>
+
+    <div class="emulator__controller">
+      <button (click)="launch()">Запустить</button>
+      <button (click)="launchInterval()">Запустить пошагово</button>
+      <button (click)="launchOneInstruction()">Запустить одну инструкцию</button>
+      <label>
+        <span>Память</span>
+        <input
+          [ngModel]="asm.memorySize"
+          (ngModelChange)="asm.setMemorySize($event)"
+          type="range"
+          min="4"
+          max="30"
+          value="20"
+        >
+        <span>{{ asm.memorySize }}</span>
+      </label>
+      <button (click)="resetAll()">Сбросить всё</button>
+    </div>
+
+    <div class="emulator__divider"></div>
+
+    <div class="emulator__inside">
+      <div class="list memory">
+        <span class="list__header">Память ({{ asm.memorySize }})</span>
+
+        <div class="list__item-wrapper memory">
+          @for (memory of asm.getMemory(); track $index) {
+            <div class="list__item memory">{{ memory }}</div>
+          }
+        </div>
+      </div>
+
+      <div class="list">
+        <span class="list__header">Инструкции</span>
+
+        <div class="list__item-wrapper">
+          @for (instruction of asm.getInstructions(); track $index) {
+            <div class="list__item">{{ instruction }}</div>
+          }
+        </div>
+      </div>
+
+      <div class="list">
+        <span class="list__header">Регистры</span>
+
+        <div class="list__item-wrapper">
+          <div class="list__item">ACC: {{ asm.getRegisters()['ACC'] }}</div>
+          <div class="list__item">R1: {{ asm.getRegisters()['R1'] }}</div>
+          <div class="list__item">R2: {{ asm.getRegisters()['R2'] }}</div>
+          <div class="list__item">TMP: {{ asm.getRegisters()['TMP'] }}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+

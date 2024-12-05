@@ -39,7 +39,28 @@ export class HarvardDualOperandPageComponent {
 
   }
 
+  resetRegisters() {
+    this.asm.loadInstructions([
+      'RESET ACC',
+      'RESET R1',
+      'RESET R2',
+      'RESET TMP'
+    ]);
+    this.asm.execute();
+    this.asm.loadInstructions([]);
+  }
+
+  resetMemory() {
+    this.asm.loadData(new Array( this.asm.getMemory().length).fill(0));
+  }
+
+  resetInstructions() {
+    this.asm.loadInstructions([]);
+  }
+
   resetAll() {
-    this.asm.setMemorySize(0);
+    this.resetRegisters();
+    this.resetInstructions();
+    this.resetMemory();
   }
 }

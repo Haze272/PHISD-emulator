@@ -36,7 +36,11 @@
         >
         <span>{{ asm.memorySize }}</span>
       </label>
-      <button disabled (click)="resetAll()">Сбросить всё</button>
+      <hr>
+      <button (click)="resetRegisters()">Сбросить регистры</button>
+      <button (click)="resetMemory()">Сбросить память</button>
+      <button (click)="resetInstructions()">Сбросить инструкции</button>
+      <button (click)="resetAll()">Сбросить всё</button>
 
       <div class="list">
         <span class="list__header">Справка по инструкциям:</span>

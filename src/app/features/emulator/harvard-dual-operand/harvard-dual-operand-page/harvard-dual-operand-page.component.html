@@ -21,9 +21,9 @@
     <div class="emulator__divider"></div>
 
     <div class="emulator__controller">
-      <button (click)="launch()">Запустить</button>
+      <button [disabled]="!(asm.getInstructions().length > 0)" (click)="launch()">Запустить</button>
       <button disabled (click)="launchInterval()">Запустить пошагово</button>
-      <button disabled (click)="launchOneInstruction()">Запустить одну инструкцию</button>
+      <button [disabled]="!checkLaunchStep()" (click)="launchOneInstruction()">Запустить одну инструкцию</button>
       <label>
         <span>Память</span>
         <input
@@ -116,7 +116,16 @@
 
         <div class="list__item-wrapper">
           @for (instruction of asm.getInstructions(); track $index) {
-            <div class="list__item">{{ instruction }}</div>
+            <div
+              [ngClass]="{
+                'state-actual': instruction.state === 'actual',
+                'state-passed': instruction.state === 'passed',
+                'state-error': instruction.state === 'error'
+              }"
+              class="list__item instruction"
+            >
+              {{ $index }}. {{ instruction.code }}
+            </div>
           }
         </div>
       </div>

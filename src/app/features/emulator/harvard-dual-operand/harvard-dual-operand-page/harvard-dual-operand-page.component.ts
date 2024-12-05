@@ -1,11 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {HarvardDualOperandService} from '../harvard-dual-operand.service';
 import {FormsModule} from '@angular/forms';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-harvard-dual-operand-page',
   imports: [
-    FormsModule
+    FormsModule,
+    NgClass
   ],
   templateUrl: './harvard-dual-operand-page.component.html',
   styleUrl: './harvard-dual-operand-page.component.scss'
@@ -27,6 +29,10 @@ export class HarvardDualOperandPageComponent {
     this.asm.loadInstructions(instructions);
   }
 
+  checkLaunchStep(): boolean {
+    return !!this.asm.getInstructions().find(el => el.state === 'none');
+  }
+
   launch() {
     this.asm.execute();
   }
@@ -36,7 +42,7 @@ export class HarvardDualOperandPageComponent {
   }
 
   launchOneInstruction() {
-
+    this.asm.executeOne();
   }
 
   resetRegisters() {

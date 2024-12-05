@@ -78,5 +78,20 @@
       align-items: center;
       font-size: 12px;
     }
+
+    &.instruction {
+
+      &.state {
+        &-actual {
+          background-color: #bbb1ff;
+        }
+        &-passed {
+          background-color: #b1ffc3;
+        }
+        &-error {
+          background-color: #ffb1b1;
+        }
+      }
+    }
   }
 }

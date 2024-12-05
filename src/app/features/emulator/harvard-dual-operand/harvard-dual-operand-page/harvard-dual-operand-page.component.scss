@@ -21,6 +21,7 @@
   &__controller {
     display: flex;
     flex-direction: column;
+    gap: 4px;
   }
 
   &__inside {
@@ -57,6 +58,7 @@
     flex-direction: column;
     height: 200px;
     overflow-y: auto;
+    gap: 4px;
 
     &.memory {
       display: grid;

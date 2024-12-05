@@ -22,8 +22,8 @@
 
     <div class="emulator__controller">
       <button (click)="launch()">Запустить</button>
-      <button (click)="launchInterval()">Запустить пошагово</button>
-      <button (click)="launchOneInstruction()">Запустить одну инструкцию</button>
+      <button disabled (click)="launchInterval()">Запустить пошагово</button>
+      <button disabled (click)="launchOneInstruction()">Запустить одну инструкцию</button>
       <label>
         <span>Память</span>
         <input
@@ -36,7 +36,62 @@
         >
         <span>{{ asm.memorySize }}</span>
       </label>
-      <button (click)="resetAll()">Сбросить всё</button>
+      <button disabled (click)="resetAll()">Сбросить всё</button>
+
+      <div class="list">
+        <span class="list__header">Справка по инструкциям:</span>
+
+        <div class="list__item-wrapper">
+          <div class="list__item">
+            <p>LOAD &#123; принимающий &#125; &#123; ячейка &#125; - загрузить в регистр значение из памяти</p>
+          </div>
+          <div class="list__item">
+            <p>ADD &#123; принимающий операнд &#125; &#123; операнд &#125; - сложить два операнда и записать в операнд 1</p>
+          </div>
+          <div class="list__item">
+            <p>MUL &#123; принимающий &#125; &#123; операнд &#125; - перемножить два операнда и записать в операнд 1</p>
+          </div>
+          <div class="list__item">
+            <p>STORE &#123; регистр &#125; &#123; ячейка памяти &#125; - загрузить в память значение регистра</p>
+          </div>
+          <div class="list__item">
+            <p>RESET &#123; регистр &#125; - сбросить регистр</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="list">
+        <span class="list__header">Сумма элементов массива</span>
+
+        <div class="list__item-wrapper">
+          <div class="list__item">
+            <p>1) Введите в поле данных для загрузки массив 1, 2, 3, 4, 5, 0</p>
+          </div>
+          <div class="list__item">
+            <p>2) Нажмите кнопку "Загрузить" - данные загрузятся в память эмулятора</p>
+          </div>
+          <div class="list__item">
+            <span>
+              <p>3) Введите в поле команд для загрузки</p>
+              <span>RESET ACC</span><br/>
+              <span>LOAD R1 0</span><br/>
+              <span>ADD ACC R1</span><br/>
+              <span>LOAD R1 1</span><br/>
+              <span>ADD ACC R1</span><br/>
+              <span>LOAD R1 2</span><br/>
+              <span>ADD ACC R1</span><br/>
+              <span>LOAD R1 3</span><br/>
+              <span>ADD ACC R1</span><br/>
+              <span>LOAD R1 4</span><br/>
+              <span>ADD ACC R1</span><br/>
+              <span>STORE ACC 5</span><br/>
+            </span>
+          </div>
+          <div class="list__item">
+            <p>4) Нажмите кнопку "Загрузить" - инструкции загрузятся в память эмулятора</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="emulator__divider"></div>

@@ -25,7 +25,8 @@ export class HarvardDualOperandService {
   }
 
   loadData(data: number[]) {
-    this.memoryData = [...data];
+    this.memoryData.splice(0, data.length, ...data);
+    // this.memoryData = [...data];
   }
 
 
